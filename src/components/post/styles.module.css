@@ -67,3 +67,57 @@
 .content p a:hover{
     color: var(--green-300);
 }
+
+.commentForm{
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-600);
+}
+
+.commentForm > strong{
+    line-height: 1.6;
+    color: var(--gray-100);
+}
+
+.commentForm textarea{
+    box-sizing: border-box;
+    width: 100%;
+    height: 6rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: var(--gray-900);
+    border: 0;
+    /* border: 1px solid var(--green-500); */
+    border-radius: 8px;
+    color: var(--gray-100);
+    line-height: 1.4;
+    resize: none;
+}
+
+.commentForm footer{
+    visibility: hidden;
+    max-height: 0;
+}
+
+.commentForm:focus-within footer{
+    visibility: visible;
+    max-height: none;
+}
+
+.commentForm button{
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--green-500);
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: .1s;
+}
+
+.commentForm button:hover{
+    background-color: var(--green-300);
+}
