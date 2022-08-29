@@ -21,6 +21,13 @@ export function Post({author, content, publishedAt}){
         addSuffix: true
     });
 
+    const isCommentEmpty = !newCommentText.length;
+
+    function handleNewCommentText(e){
+        setNewCommentText(e.target.value);
+        e.target.setCustomValidity('')
+    }
+
     function handleCreateNewComment(e) {
         e.preventDefault();
 
@@ -28,9 +35,13 @@ export function Post({author, content, publishedAt}){
         setNewCommentText('');
     }
 
-
     function deleteComment(commentToDelete) {
         setComments(comments.filter(comment => comment !== commentToDelete));
+    }
+
+    function handleNewCommentInvalid(event){
+        console.log(event.target)
+        event.target.setCustomValidity("Este campo não pode estar vazio !")
     }
 
     return (
@@ -64,11 +75,16 @@ export function Post({author, content, publishedAt}){
 
                 <textarea
                     value={newCommentText}
-                    onChange={(e)=>setNewCommentText(e.target.value)}
                     placeholder='Deixe seu comentário'
+                    onChange={handleNewCommentText}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
                 <footer>
-                    <button type='submit'>Publicar</button>
+                    <button 
+                        type='submit'
+                        disabled={isCommentEmpty}
+                    >Publicar</button>
                 </footer>
             </form>
 
